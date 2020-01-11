@@ -1,0 +1,7 @@
+{
+  "name": "slothpixel",
+  "creator": "FalseHonesty",
+  "description": "A wrapper around the slothpixel API. Big thanks to builder_247 for Slothpixel!!",
+  "requires": ["request"],
+  "version": "1.0.0"
+}
