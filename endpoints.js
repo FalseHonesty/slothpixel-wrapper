@@ -1,15 +1,23 @@
 import { cleanUUID } from "./utils";
 import sendRequest from "./requests";
-import Promise from "Promise/index";
+import Promise from "Promise";
 
 /**
- * @param usernameOrUUID The username/uuid of the player
+ * @param usernameOrUUID The username/UUID of the player, or an array of usernames/UUIDs.
+ * @param fields An array of fields to include alongside the basic data. The default is receiving
+ * every possible field.
  * @returns {Promise}
  */
-function getPlayer(usernameOrUUID) {
+function getPlayer(usernameOrUUID, fields = []) {
+    if (Array.isArray(usernameOrUUID)) {
+        usernameOrUUID = usernameOrUUID.join();
+    }
+
     const name = cleanUUID(usernameOrUUID);
 
-    return sendRequest(`/players/${name}`);
+    return sendRequest(`/players/${name}`, {
+        fields: fields.join()
+    });
 }
 
 /**

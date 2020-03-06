@@ -14,8 +14,6 @@ function sendRequest(extension, parameters = {}) {
         extension += `?${queryParameters}`;
     }
 
-    print(`URL: ${BASE_URL + extension}`);
-
     const returnedPromise = request({
         url: BASE_URL + extension,
         headers: {
